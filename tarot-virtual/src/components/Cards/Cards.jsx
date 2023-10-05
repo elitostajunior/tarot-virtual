@@ -1,17 +1,80 @@
-import React from 'react'
-import { ButtonContainer } from './styles'
+import React, { useEffect, useState } from "react";
+import { BACK_CARD_URL, BASE_URL } from "../../constants/url";
+import { getCards } from "../../services/cards";
+import PopupCard from "../PopupCard/PopupCard";
+import { ButtonContainer, CardsContainer, StyledButton, StyledImg } from "./styled";
 
 function Cards() {
+    const [cards, setCards] = useState([]);
+    const [trigger, setTrigger] = useState(false);
+    const [selectedCard, setSelectedCard] = useState(null);
+    const [shuffled, setShuffled] = useState(false);
+
+    useEffect(() => {
+        getCards(setCards);
+    }, []);
+
+    const copyArray = cards.length > 0 && [...cards];
+
+    const shuffleCards = (array) => {
+        setShuffled(true);
+        let newPosition;
+        let temp;
+
+        for (let card of array) {
+            card.flipCard = false;
+        }
+
+        for (let i = array.length - 1; i > 0; i--) {
+            newPosition = Math.floor(Math.random() * i);
+            temp = array[i];
+            array[i] = array[newPosition];
+            array[newPosition] = temp;
+        }
+        setCards([...array]);
+    };
+
+    const popupCard = (card) => {
+        setTrigger(true);
+        card.flipCard = true;
+        setSelectedCard(card);
+    };
+
+    const restartCards = () => {
+        setShuffled(false);
+        getCards(setCards);
+    };
+
+    const cardsMap = cards.length > 0 && cards.map((card) => {
+        return (
+            <StyledImg
+                src={card.flipCard ? `${BASE_URL}/${card.image}` : BACK_CARD_URL}
+                alt={card.name}
+                key={card.name}
+                onClick={() => popupCard(card)}
+            />
+        );
+    });
+
     return (
-        <>
-            <h1>Hello World!</h1>
-            <p>Meu parágrafo</p>
+        <div>
             <ButtonContainer>
-                <button>Recomeçar</button>
-                <button>Embaralhar</button>
+                {shuffled ? (
+                <>
+                <StyledButton onClick={restartCards}>Recomeçar</StyledButton>
+                <StyledButton onClick={() => shuffleCards(copyArray)}>Embaralhar</StyledButton>
+                </>
+                ) : (
+                <StyledButton onClick={() => shuffleCards(copyArray)}>Embaralhar</StyledButton>
+                )}
             </ButtonContainer>
-        </>
-    )
+
+            <CardsContainer>
+                {cardsMap}
+                {trigger && <PopupCard trigger={trigger} setTrigger={setTrigger} card={selectedCard} />}
+            </CardsContainer>
+        </div>
+    );
 }
 
-export default Cards
+export default Cards;
