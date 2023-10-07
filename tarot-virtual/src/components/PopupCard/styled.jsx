@@ -16,7 +16,7 @@ export const PopupCardContainer = styled.div`
 
 export const DetailsContainer = styled.div`
     background-color: white;
-    display:flex;
+    display: flex;
     width: 50vw;
     justify-content: space-around;
     box-sizing: border-box;

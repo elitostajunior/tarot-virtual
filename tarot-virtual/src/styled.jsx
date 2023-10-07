@@ -8,3 +8,11 @@ export const MainContainer = styled.div`
     min-height: 100vh;
     background-color: #ececec;
 `
+
+export const Title = styled.h1`
+    text-align: center;
+    font-family: 'Croissant One', cursive;
+    font-size: 3rem;
+    margin-top: 15px;
+    text-shadow: 3px 3px 4px #9C9C9C;
+`
