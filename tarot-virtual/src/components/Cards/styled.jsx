@@ -6,12 +6,13 @@ export const CardsContainer = styled.div`
     gap: 16px;
     justify-content: center;
     margin-top: 32px;
+    margin-left: 10px;
 `
 
 export const ButtonContainer = styled.div`
     display: flex;
     justify-content: center;
-    margin: 16px 0 0 0;
+    margin: 16px 0 0 10px;
     flex-wrap: wrap;
 `
 
