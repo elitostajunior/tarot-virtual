@@ -38,3 +38,11 @@ https://mighty-fowl.surge.sh/
 
 O projeto Tarot Virtual é uma aplicação interativa que permite aos usuários explorar e interagir com cartas de tarot. Ele demonstra o uso de React.js, styled-components e Axios para criar uma experiência envolvente com cartas de tarot. É um projeto interessante para aprender e praticar o desenvolvimento web com React.js e estilização dinâmica com styled-components.
 
+### Imagens do Projeto
+
+![captura1](https://github.com/elitostajunior/tarot-virtual/assets/89365251/4043bdfa-c9ab-4ef7-b077-a83a5a1325d8)
+
+![captura2](https://github.com/elitostajunior/tarot-virtual/assets/89365251/684531af-9c3f-472f-b6d5-cb2626de74e7)
+
+
+
