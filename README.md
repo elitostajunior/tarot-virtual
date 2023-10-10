@@ -8,7 +8,7 @@
 
 ### Deploy do Projeto
 
-https://mighty-fowl.surge.sh/
+https://yummy-hammer.surge.sh/
 
 ### Tecnologias Utilizadas
 
